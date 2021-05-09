@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>GAaMa | Stream your favourite music for free</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+    <div class="container">
+        <div class="navbar">
+            <img src="media/logo.png" class="logo">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+            </ul>
+        </div>
+        <div class="content">
+            <div class="left-col">
+                <h1>THE <br> REAL <br> SOUND</h1>
+            </div>
+            <div class="right-col">
+                <div class="main">
+                    <div class="playing_part">
+                        <div class="img">
+                            <img src="media/ab.jpg">
+                        </div>
+                    </div>
+
+                    <!-- control part -->
+                    <div class="control_part">
+                        <div class="song-title">
+                            <p>ON & ON</p><br>
+                            <p>CARTOON</p>
+                        </div>
+
+                        <div class="control_buttons">
+                            <div class="main_btns">
+                                <button><img src="media/play.png" id="icon"></button>
+                            </div>
+
+                            <audio id="mySong" controls>
+                                <source src="media/on.mp3" type="audio/mp3">
+                                    <div> 
+                                      <button onclick="document.getElementById('mySong').play()">Play</button> 
+                                      <button onclick="document.getElementById('mySong').pause()">Pause</button> 
+                                      <button onclick="document.getElementById('mySong').volume += 0.1">Vol +</button> 
+                                      <button onclick="document.getElementById('mySong').volume -= 0.1">Vol -</button> 
+                                    </div>
+                            </audio>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+<!-- js part -->
+
+<script>
+    var mySong = document.getElementById("mySong");
+    var icon = document.getElementById("icon");
+
+    icon.onclick = function(){
+        if(mySong.paused){
+            mySong.play();
+            icon.src = "media/pause.png";
+        }else{
+            mySong.pause();
+            icon.src = "media/play.png";
+        }
+    }
+    var player = document.getElementById('player');    
+    player.addEventListener("timeupdate", function() {
+    var currentTime = player.currentTime;
+    var duration = player.duration;
+    $('.hp_range').stop(true,true).animate({'width':(currentTime +.25)/duration*100+'%'},250,'linear');
+});
+</script>
+
+</body>
+</html>
